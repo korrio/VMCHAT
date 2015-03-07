@@ -1,0 +1,13 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="Nav_Height">48dp</dimen>
+    <dimen name="Nav_Padding">6dp</dimen>
+
+
+    <!-- Dialog LongClick -->
+    <dimen name="dialog_long_click_padding">20dp</dimen>
+</resources>

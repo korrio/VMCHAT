@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">VDOMax</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!-- MainActivity -->
+    <string name="txtNavigationBar_Message">Message</string>
+    <string name="txtNavigationBar_Chat">Chat</string>
+    <string name="txtNavigationBar_Contact">Contact</string>
+    <string name="txt_EdtHint">Search for peple and groups</string>
+
+
+    <!-- Fragment ContactList -->
+    <string name="txtContact_CreateGroup">Create a Group</string>
+    <string name="txtContact_createConference">Create a Conference</string>
+    <string name="txtContact_TabFriend">Friend</string>
+    <string name="txtContact_TabFollowing">Following</string>
+    <string name="txtContact_TabFollowers">Followers</string>
+    
+            <!-- Dialog -->
+            <string name="txt_dialog_Block">Block</string>
+            <string name="txt_dialog_Follow">Follow</string>
+
+
+            <!-- Dialog LongClick -->
+            <string name="txtChat_th">แชต</string>
+            <string name="txtSave_th">เก็บ</string>
+            <string name="txtDelete_th">ลบ</string>
+
+</resources>
