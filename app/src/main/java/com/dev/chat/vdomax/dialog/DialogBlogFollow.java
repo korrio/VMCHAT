@@ -32,7 +32,7 @@ public class DialogBlogFollow extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_dialog_blog_follow);
-
+            //sdfsdff
        ButterKnife.inject(this);
     }
 
