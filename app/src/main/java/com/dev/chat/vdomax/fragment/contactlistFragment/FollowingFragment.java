@@ -2,14 +2,19 @@ package com.dev.chat.vdomax.fragment.contactlistFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.dev.chat.vdomax.R;
-import com.dev.chat.vdomax.adapter.contactlistfragment.GridFollowingAdapter;
+import com.dev.chat.vdomax.adapter.contactlistfragment.ListFollowingAdapter;
+import com.dev.chat.vdomax.event.retrofit.following.GetFollowingSuccessEvent;
+import com.dev.chat.vdomax.fragment.basefragment.BaseFragment;
+import com.dev.chat.vdomax.model.followingmodel.FollowingModel;
+import com.squareup.otto.Subscribe;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,10 +22,10 @@ import butterknife.InjectView;
 /**
  * Created by Adisorn on 24/2/2558.
  */
-public class FollowingFragment extends Fragment {
+public class FollowingFragment extends BaseFragment {
 
-    @InjectView(R.id.gridViewFollowing)
-    GridView gridViewFollowing;
+    @InjectView(R.id.listViewFollowing)
+    ListView listViewFollowing;
 
     public FollowingFragment() {
     }
@@ -34,32 +39,20 @@ public class FollowingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_following_tab, container, false);
         ButterKnife.inject(this , rootView);
-//        initUI(rootView);
-//        initData();
+
         return rootView;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initUI();
-        initData();
+    @Subscribe public void onGetFollowingSuccessEvent(GetFollowingSuccessEvent getFollowingSuccessEvent){
+        Toast.makeText(getActivity(), "Following_Success", Toast.LENGTH_SHORT).show();
+        Log.d("EVENTTTT ", "GetFollowingSuccess");
+       // getFollowingSuccessEvent.get
+        initData(getFollowingSuccessEvent.getFollowingModel());
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-//        initUI();
-//        initData();
-    }
-
-
-    void initUI(){
-        gridViewFollowing.setNumColumns(3);
-    }
-    void initData(){
-        GridFollowingAdapter gridFollowingAdapter = new GridFollowingAdapter(getActivity());
-        gridViewFollowing.setAdapter(gridFollowingAdapter);
+    void initData(FollowingModel followingModel){
+        ListFollowingAdapter gridFollowingAdapter = new ListFollowingAdapter(getActivity() ,followingModel );
+        listViewFollowing.setAdapter(gridFollowingAdapter);
     }
 
 }

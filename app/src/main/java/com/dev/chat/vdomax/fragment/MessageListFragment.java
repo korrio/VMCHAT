@@ -52,8 +52,8 @@ public class MessageListFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_massagelist, container, false);
 
         ButterKnife.inject(this , rootView);
-        initUI(rootView);
-        initData();
+//        initUI(rootView);
+//        initData();
         return rootView;
     }
     void initUI(View rootView){
@@ -62,7 +62,7 @@ public class MessageListFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
-                new DialogBlogFollow(getActivity()).show(); //show dialog
+                new DialogBlogFollow(getActivity() , getActivity().getSupportFragmentManager()).show(); //show dialog
 
                 return false;
             }
@@ -83,16 +83,16 @@ public class MessageListFragment extends Fragment {
         });
 
     }
-    void initData(){
-
-        prepareListData();
-        messageListAdapter = new MessageListAdapter(getActivity() , listDataHeader , listDataChild);
-        epMessageList.setAdapter(messageListAdapter);
-        for (int countGroup = 0 ; countGroup< messageListAdapter.getGroupCount() ; countGroup++ ){
-            epMessageList.expandGroup(countGroup); // expandGroup
-        }
-
-    }
+//    void initData(){
+//
+//        prepareListData();
+//        messageListAdapter = new MessageListAdapter(getActivity() , listDataHeader , listDataChild);
+//        epMessageList.setAdapter(messageListAdapter);
+//        for (int countGroup = 0 ; countGroup< messageListAdapter.getGroupCount() ; countGroup++ ){
+//            epMessageList.expandGroup(countGroup); // expandGroup
+//        }
+//
+//    }
     private void prepareListData() {
 
         listDataHeader = new ArrayList<String>();

@@ -32,13 +32,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/txt_dialog_Block"
-            android:id="@+id/button4" />
+            android:id="@+id/btBlock" />
 
         <Button
             android:layout_weight="0.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/txt_dialog_Follow"
-            android:id="@+id/button5" />
+            android:id="@+id/btFollow" />
     </LinearLayout>
 </LinearLayout>

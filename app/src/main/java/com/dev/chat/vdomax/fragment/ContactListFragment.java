@@ -3,6 +3,8 @@ package com.dev.chat.vdomax.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,11 @@ import android.view.ViewGroup;
 
 import com.dev.chat.vdomax.R;
 import com.dev.chat.vdomax.adapter.contactlistfragment.ContactListViewpageAdapter;
+import com.dev.chat.vdomax.event.retrofit.followers.GetFollowersEvent;
+import com.dev.chat.vdomax.event.retrofit.following.GetFollowingEvent;
+import com.dev.chat.vdomax.event.retrofit.friend.GetFrienEvent;
+import com.dev.chat.vdomax.fragment.basefragment.BaseFragment;
+import com.dev.chat.vdomax.handler.ApiBus;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -18,7 +25,7 @@ import butterknife.OnClick;
 /**
  * Created by Adisorn on 24/2/2558.
  */
-public class ContactListFragment extends Fragment {
+public class ContactListFragment extends BaseFragment {
 
 
 
@@ -28,7 +35,7 @@ public class ContactListFragment extends Fragment {
     @InjectView(R.id.pager) ViewPager viewPager;
 
 
-    private String[] tabs = { "Top Rated", "Games", "Movies" };
+   // private String[] tabs = { "Top Rated", "Games", "Movies" };
 
     public ContactListFragment() {
     }
@@ -46,6 +53,7 @@ public class ContactListFragment extends Fragment {
         initUI();
 
 
+
         return rootView;
     }
 
@@ -59,9 +67,12 @@ public class ContactListFragment extends Fragment {
     void initUI(){
 
 
-        adapter = new ContactListViewpageAdapter(getFragmentManager());
+        adapter = new ContactListViewpageAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
 
+
+        ApiBus.getInstance().post(new GetFrienEvent());        //Call To ApiHandler
+        ApiBus.getInstance().post(new GetFollowingEvent());
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -72,6 +83,7 @@ public class ContactListFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 //actionBar.setSelectedNavigationItem(position);
+                ApiBus.getInstance().post(new GetFollowersEvent());  // Get Data Followers
             }
 
             @Override
@@ -80,19 +92,41 @@ public class ContactListFragment extends Fragment {
             }
         });
 
+//        Handler handler = new Handler();
+//        Runnable runnable = new Runnable() {
+//            public void run() {
+////                    ApiBus.getInstance().post(new GetFrienEvent());        //Call To ApiHandler
+////                    ApiBus.getInstance().post(new GetFollowingEvent());
+////                ApiBus.getInstance().post(new GetFollowersEvent());
+//
+//            }
+//        };
+//        handler.postDelayed(runnable , 500);
+
     }
 
-    @OnClick(R.id.tabFriend)
-    public void ClickFriendTab(){
+    @OnClick(R.id.tabFriend) public void ClickFriendTab(){
         viewPager.setCurrentItem(0);
     }
-    @OnClick(R.id.tabFollowing)
-    public void ClickFollowingTab(){
+    @OnClick(R.id.tabFollowing) public void ClickFollowingTab(){
         viewPager.setCurrentItem(1);
+        ApiBus.getInstance().post(new GetFollowersEvent());
     }
-    @OnClick(R.id.tabFollower)
-    public void ClickFollowerTab(){
+    @OnClick(R.id.tabFollower) public void ClickFollowerTab(){
         viewPager.setCurrentItem(2);
+    }
+
+    @OnClick(R.id.btCreateGroup) public void onClickCreateGroup(){
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.frameFragment, CreateGroupFragment.newInstance());
+        transaction.addToBackStack(null);
+        transaction.commit();
+       // Toast.makeText(getActivity(), "navIconLeft", Toast.LENGTH_SHORT).show();
+
+    }
+    @OnClick(R.id.btCreateConference) public void onClickConference(){
+
     }
 
 

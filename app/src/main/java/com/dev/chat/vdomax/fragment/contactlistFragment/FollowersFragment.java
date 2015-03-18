@@ -2,14 +2,18 @@ package com.dev.chat.vdomax.fragment.contactlistFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.dev.chat.vdomax.R;
-import com.dev.chat.vdomax.adapter.contactlistfragment.tab.ListFolowAdapter;
+import com.dev.chat.vdomax.adapter.contactlistfragment.tab.ListFollowersAdapter;
+import com.dev.chat.vdomax.event.retrofit.followers.GetFollowersSuccessEvent2;
+import com.dev.chat.vdomax.fragment.basefragment.BaseFragment;
+import com.dev.chat.vdomax.model.followersmodel.FollowersModel;
+import com.squareup.otto.Subscribe;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,10 +21,12 @@ import butterknife.InjectView;
 /**
  * Created by Adisorn on 24/2/2558.
  */
-public class FollowersFragment extends Fragment {
+public class FollowersFragment extends BaseFragment {
 
-    @InjectView(R.id.listViewFollowing)
-    ListView listViewFollowing;
+    @InjectView(R.id.listViewFollowers)
+    ListView listViewFollowers;
+
+    private ListFollowersAdapter listFollowersAdapter;
 
     public FollowersFragment() {
     }
@@ -36,14 +42,22 @@ public class FollowersFragment extends Fragment {
 
         ButterKnife.inject(this , rootView);
         initUI(rootView);
-        initData();
+        //initData();
         return rootView;
     }
-    void initUI(View rootView){
+    @Subscribe public void onEvent(GetFollowersSuccessEvent2 event){
+        Toast.makeText(getActivity() , "Success///" , Toast.LENGTH_SHORT).show();
 
+        initData(event.getFollowersModel());
     }
-    void initData(){
-        ListFolowAdapter listFolowAdapter = new ListFolowAdapter(getActivity());
-        listViewFollowing.setAdapter(listFolowAdapter);
+
+    void initUI(View rootView){
+        listFollowersAdapter = new ListFollowersAdapter(getActivity());
+        listViewFollowers.setAdapter(listFollowersAdapter);
+    }
+    void initData(FollowersModel followersModel){
+//        listFollowersAdapter = new ListFollowersAdapter(getActivity() , followersModel);
+//        listViewFollowers.setAdapter(listFollowersAdapter);
+        listFollowersAdapter.addData(followersModel);
     }
 }

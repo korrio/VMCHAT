@@ -10,4 +10,7 @@
 
     <!-- Dialog LongClick -->
     <dimen name="dialog_long_click_padding">20dp</dimen>
+
+
+    <dimen name="spacing">8dp</dimen>
 </resources>

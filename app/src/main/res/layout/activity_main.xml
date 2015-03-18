@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:padding="@dimen/Nav_Padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:id="@+id/relativeLayout">
+
+        <ImageView
+            android:src="@android:drawable/sym_call_outgoing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/navIconLeft" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textNavigationBar"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/navIconRight"
+            android:src="@android:drawable/sym_call_outgoing"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/frameFragment"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/relativeLayout">
+
+        <LinearLayout
+            android:id="@+id/layoutSearch"
+            android:paddingLeft="@dimen/Nav_Padding"
+            android:paddingRight="@dimen/Nav_Padding"
+            android:paddingBottom="@dimen/Nav_Padding"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp">
+
+            <EditText
+                android:background="@drawable/rounded_corners"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/layoutSearch"></LinearLayout>
+
+        <LinearLayout
+
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/linearLayout"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:id="@+id/layoutMessageListBt"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:src="@android:drawable/btn_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutChatBt"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:src="@android:drawable/btn_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutContactBt"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:src="@android:drawable/btn_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView7" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
