@@ -12,6 +12,7 @@ import com.dev.chat.vdomax.R;
 import com.dev.chat.vdomax.VdoMaxAplication;
 import com.dev.chat.vdomax.model.friendmodel.FriendModel;
 import com.dev.chat.vdomax.model.friendmodel.User;
+import com.dev.chat.vdomax.ui.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import butterknife.ButterKnife;
@@ -144,7 +145,8 @@ public class MessageListAdapter extends BaseExpandableListAdapter {
 
         Picasso.with(_context)
                 .load(VdoMaxAplication.IMAGE_ENDPOINT + user.getAvatar())
-                .resize(sizePicProfile , sizePicProfile)
+                //.resize(sizePicProfile , sizePicProfile)
+                .transform(new CircleTransform())
                 .into(holderChild.picProfile);
 
         holderChild.textUser.setText(user.getName());

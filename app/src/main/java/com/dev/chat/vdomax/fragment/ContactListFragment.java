@@ -92,16 +92,6 @@ public class ContactListFragment extends BaseFragment {
             }
         });
 
-//        Handler handler = new Handler();
-//        Runnable runnable = new Runnable() {
-//            public void run() {
-////                    ApiBus.getInstance().post(new GetFrienEvent());        //Call To ApiHandler
-////                    ApiBus.getInstance().post(new GetFollowingEvent());
-////                ApiBus.getInstance().post(new GetFollowersEvent());
-//
-//            }
-//        };
-//        handler.postDelayed(runnable , 500);
 
     }
 

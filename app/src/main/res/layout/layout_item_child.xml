@@ -6,13 +6,12 @@
     android:gravity="center_vertical" >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/profileSize"
+        android:layout_height="@dimen/profileSize"
         android:id="@+id/picProfile"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="36dp" />
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/textUser"
@@ -24,8 +23,9 @@
         android:padding="5dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#FF000000"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/picProfile"
         android:layout_toEndOf="@+id/picProfile" />
 
